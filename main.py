@@ -1,15 +1,15 @@
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
-import os
 
-TOKEN = os.getenv("8015835865:AAGQl9PWXc1t-Jm0PoQy4hY0_9x3oJJ9kfg")
+# ⚠️ Токен вставлен напрямую (НЕБЕЗОПАСНО — только для теста!)
+TOKEN = "8015835865:AAGQl9PWXc1t-Jm0PoQy4hY0_9x3oJJ9kfg"
 
+# Функция при /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
-        "📱 Добро пожаловать в OLXuz!\n\n🛒 Здесь вы можете найти и продать товары прямо в Telegram.",
-        parse_mode="Markdown"
-    )
+    await update.message.reply_text("📱 Добро пожаловать в OLXuz!\nНайдите товары быстро и удобно!")
 
-app = Application.builder().token(TOKEN).build()
-app.add_handler(CommandHandler("start", start))
-app.run_polling()
+# Запуск бота
+if __name__ == "__main__":
+    app = Application.builder().token(TOKEN).build()
+    app.add_handler(CommandHandler("start", start))
+    app.run_polling()
